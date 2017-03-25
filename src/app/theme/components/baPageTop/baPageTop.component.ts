@@ -26,7 +26,6 @@ export class BaPageTop {
       if(auth) {
         const itemObservable = this.af.database.object('/users/' + auth.uid);
 
-        //  itemObservable.subscribe(item => this.username = item.$value)
         itemObservable.subscribe(item => this.name = item.firstname);
       }
     });

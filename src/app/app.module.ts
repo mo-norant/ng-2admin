@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { AngularFireModule } from 'angularfire2';
-import { AuthGuard } from './././auth.service';
+import { AuthGuard } from './auth.service';
 
 /*
  * Platform and Environment providers/directives/pipes

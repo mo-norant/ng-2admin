@@ -19,6 +19,7 @@ export class Register {
   public password: AbstractControl;
   public repeatPassword: AbstractControl;
   public passwords: FormGroup;
+  error;
 
   public submitted: boolean = false;
 
@@ -45,7 +46,8 @@ export class Register {
     picture: 'assets/img/app/profile/user.jpg'
   };
   public uploaderOptions:NgUploaderOptions = {
-    // url: 'http://website.com/upload'
+    
+
     url: '',
   };
 
@@ -59,7 +61,6 @@ export class Register {
         password: this.form.value.passwords.password
       }).then(
         (success) => {
-          console.log
           console.log("gelukt");
           const itemObservable = this.af.database.object('/users/' + success.uid);
 
@@ -69,7 +70,7 @@ export class Register {
           this.router.navigate(['/dashboard']);
         }).catch(
         (err) => {
-          console.log("bericht" + err.message);
+          this.error = err;
         })
 
     }

@@ -16,6 +16,7 @@ export class Login {
   public email:AbstractControl;
   public password:AbstractControl;
   public submitted:boolean = false;
+  error;
 
   constructor(fb:FormBuilder , public af: AngularFire , private router: Router) {
     this.form = fb.group({
@@ -50,17 +51,12 @@ export class Login {
         this.router.navigate(['/dashboard']);
       }).catch(
         (err) => {
-        console.log(err);
+        this.error = err.message;
         
       })
     }
   }
   
-
-
-
-
-
    loginGoogle() {
     this.af.auth.login({
       provider: AuthProviders.Google,
@@ -70,7 +66,7 @@ export class Login {
         this.router.navigate(['/dashboard']);
       }).catch(
         (err) => {
-
+          this.error = err.message;
       })
   }
 }
