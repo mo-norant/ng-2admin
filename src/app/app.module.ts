@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { AngularFireModule } from 'angularfire2';
+import { AuthGuard } from './././auth.service';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -30,6 +32,14 @@ export type StoreType = {
   disposeOldHosts: () => void
 };
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyCipIk2HHAC0cHIi63D-PbaQocDgHS7mok",
+  authDomain: "finheartbel.firebaseapp.com",
+  databaseURL: "https://finheartbel.firebaseio.com",
+  storageBucket: "finheartbel.appspot.com",
+  messagingSenderId: "1059985304838"
+};
+
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
@@ -46,11 +56,15 @@ export type StoreType = {
     ReactiveFormsModule,
     NgaModule.forRoot(),
     PagesModule,
-    routing
+    routing,
+    AngularFireModule.initializeApp(firebaseConfig)
+
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    AuthGuard
+
   ]
 })
 

@@ -17,11 +17,11 @@ export class ChartistJsService {
     simpleLineData: {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
       series: [
-        [20, 20, 12, 45, 50],
-        [10, 45, 30, 14, 12],
-        [34, 12, 12, 40, 50],
+        [25, 30, 35, 40, 45],
+        [20, 45, 30, 14, 12],
+        [15, 12, 12, 40, 50],
         [10, 43, 25, 22, 16],
-        [3, 6, 30, 33, 43]
+        [5, 6, 30, 33, 43]
       ]
     },
     areaLineData: {
@@ -39,7 +39,7 @@ export class ChartistJsService {
     biLineData: {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
       series: [
-        [1, 2, 3, 1, -2, 0, 1],
+        [1, -2, 3, 1, -2, 0, 1],
         [-2, -1, -2, -1, -2.5, -1, -2],
         [0, 0, 0, 1, 2, 2.5, 2],
         [2.5, 2, 1, 0.5, 1, 0.5, -1]
