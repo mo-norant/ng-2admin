@@ -10,9 +10,6 @@
 
 <a target="_blank" href="http://akveo.com/ng2-admin/">Live Demo</a>
 
-## Angular 1.x version
-Here you can find Angular 1.x based version: [Blur Admin](http://akveo.github.io/blur-admin/)
- 
 ## Documentation
 Installation, customization and other useful articles: https://akveo.github.io/ng2-admin/
 
