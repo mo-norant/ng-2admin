@@ -24,14 +24,7 @@ This project runs its tests on multiple desktop and mobile browsers using [Brows
 
 <img src="https://cloud.githubusercontent.com/assets/131406/22254249/534d889e-e254-11e6-8427-a759fb23b7bd.png" height="40" />
 
-## How can I support developers?
-- Star our GitHub repo :star:
-- Create pull requests, submit bugs, suggest new features or documentation updates :wrench:
-- Follow us on [Twitter](https://twitter.com/akveo_inc) :feet:
-- Like our page on [Facebook](https://www.facebook.com/akveo/) :thumbsup:
 
-## Can I hire you guys?
-Yes!  Visit [our homepage](http://akveo.com/) or simply leave us a note to [contact@akveo.com](mailto:contact@akveo.com). We will be happy to work with you!
 
 ## Features
 * TypeScript
@@ -45,11 +38,3 @@ Yes!  Visit [our homepage](http://akveo.com/) or simply leave us a note to [cont
 * Charts (Chartist, Chart.js)
 * Maps (Google, Leaflet, amMap)
 * and many more!
-
-## License
-[MIT](LICENSE.txt) license.
-
-### From akveo
-
-Enjoy :metal:
-We're always happy to hear your feedback!
