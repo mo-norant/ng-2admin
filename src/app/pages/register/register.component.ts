@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import 'style-loader!./register.scss';
 import { NgUploaderOptions } from 'ngx-uploader';
 import {Observable} from 'rxjs/Rx';
+import { ImageResult, ResizeOptions } from 'ng2-imageupload';
 
 
 
@@ -15,15 +16,7 @@ import {Observable} from 'rxjs/Rx';
 })
 export class Register {
 
-  @Input() picture:string = '';
-
-  @Input() uploaderOptions:NgUploaderOptions = { url: '' };
-  @Input() canDelete:boolean = true;
-
-  @Output() onUpload = new EventEmitter<any>();
-  @Output() onUploadCompleted = new EventEmitter<any>();
-
-  @ViewChild('fileUpload') public _fileUpload:ElementRef;
+ 
 
   public form: FormGroup;
   public name: AbstractControl;
@@ -101,7 +94,18 @@ export class Register {
     }
   }
 
+ src: string = "";
  
+    resizeOptions: ResizeOptions = {
+        resizeMaxHeight: 128,
+        resizeMaxWidth: 128
+    };
+ 
+    selected(imageResult: ImageResult) {
+        this.src = imageResult.resized
+            && imageResult.resized.dataURL
+            || imageResult.dataURL;
+    }
 
   
 }

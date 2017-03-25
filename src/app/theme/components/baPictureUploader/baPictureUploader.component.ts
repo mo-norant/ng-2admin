@@ -73,3 +73,4 @@ export class BaPictureUploader {
   _canUploadOnServer():boolean {
     return !!this.uploaderOptions['url'];
   }
+}

@@ -4,7 +4,7 @@
     <a routerLink="/login" class="auth-link">Already have an FinHeartBel account? Sign in!</a>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
-      
+
       <div *ngIf="edited" class="button-wrapper">
         <button type="button" class="btn btn-danger">{{error}} <br> </button>
       </div>
@@ -41,7 +41,6 @@
       <div class="form-group row">
         <div class="offset-sm-2 col-sm-10">
           <ba-card title="Profile picture" baCardClass="with-scroll">
-            <ba-picture-uploader [picture]="profile.picture" [defaultPicture]="defaultPicture" [uploaderOptions]="uploaderOptions"></ba-picture-uploader>
           </ba-card>
         </div>
       </div>

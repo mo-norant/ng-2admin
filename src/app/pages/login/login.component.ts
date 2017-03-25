@@ -55,7 +55,7 @@ export class Login {
         (err) => {
           this.edited = true;
         this.error = err.message;
-                  //time na 4 seconden terug div hiden
+     //time na 4 seconden terug div hiden
 
         Observable.interval(4000)
           .take(10).map((x) => x+1)
