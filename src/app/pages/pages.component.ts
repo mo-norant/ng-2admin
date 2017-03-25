@@ -38,7 +38,6 @@ export class Pages {
   this.af.auth.subscribe(auth => {
       if (!auth) {
 
-
             this.router.navigateByUrl('/login');
 
       }

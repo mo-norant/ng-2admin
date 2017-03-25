@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Router } from '@angular/router';
+import {Observable} from 'rxjs/Rx';
 
 
 import 'style-loader!./login.scss';
@@ -17,6 +18,7 @@ export class Login {
   public password:AbstractControl;
   public submitted:boolean = false;
   error;
+  edited = false;
 
   constructor(fb:FormBuilder , public af: AngularFire , private router: Router) {
     this.form = fb.group({
@@ -51,8 +53,15 @@ export class Login {
         this.router.navigate(['/dashboard']);
       }).catch(
         (err) => {
+          this.edited = true;
         this.error = err.message;
-        
+                  //time na 4 seconden terug div hiden
+
+        Observable.interval(4000)
+          .take(10).map((x) => x+1)
+          .subscribe((x) => {
+            this.edited= false
+          });
       })
     }
   }
@@ -66,7 +75,15 @@ export class Login {
         this.router.navigate(['/dashboard']);
       }).catch(
         (err) => {
+          this.edited = true;
           this.error = err.message;
+
+          //time na 4 seconden terug div hiden
+          Observable.interval(4000)
+          .take(10).map((x) => x+1)
+          .subscribe((x) => {
+            this.edited= false
+            });
       })
   }
 }

@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component , ViewChild, Input, Output, EventEmitter, ElementRef, Renderer } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { EmailValidator, EqualPasswordsValidator } from '../../theme/validators';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Router } from '@angular/router';
 import 'style-loader!./register.scss';
 import { NgUploaderOptions } from 'ngx-uploader';
+import {Observable} from 'rxjs/Rx';
+
 
 
 @Component({
@@ -13,6 +15,16 @@ import { NgUploaderOptions } from 'ngx-uploader';
 })
 export class Register {
 
+  @Input() picture:string = '';
+
+  @Input() uploaderOptions:NgUploaderOptions = { url: '' };
+  @Input() canDelete:boolean = true;
+
+  @Output() onUpload = new EventEmitter<any>();
+  @Output() onUploadCompleted = new EventEmitter<any>();
+
+  @ViewChild('fileUpload') public _fileUpload:ElementRef;
+
   public form: FormGroup;
   public name: AbstractControl;
   public email: AbstractControl;
@@ -20,8 +32,10 @@ export class Register {
   public repeatPassword: AbstractControl;
   public passwords: FormGroup;
   error;
+  public uploadInProgress:boolean;
 
   public submitted: boolean = false;
+  edited = false;
 
   constructor(fb: FormBuilder, public af: AngularFire, private router: Router) {
 
@@ -45,34 +59,49 @@ export class Register {
   public profile:any = {
     picture: 'assets/img/app/profile/user.jpg'
   };
-  public uploaderOptions:NgUploaderOptions = {
-    
 
-    url: '',
-  };
+  loginGoogle() {
+    this.af.auth.login({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup,
+    }).then(
+        (success) => {
+        this.router.navigate(['/dashboard']);
+      }).catch(
+        (err) => {
+          this.edited = true;
+          this.error = err.message;
+      })
+  }
 
   public onSubmit(values: Object): void {
     this.submitted = true;
     if (this.form.valid) {
-      console.log(this.form.value.email);
-      console.log(this.form.value.passwords.password);
+
       this.af.auth.createUser({
         email: this.form.value.email,
         password: this.form.value.passwords.password
       }).then(
         (success) => {
-          console.log("gelukt");
           const itemObservable = this.af.database.object('/users/' + success.uid);
 
           itemObservable.set({ firstname: this.form.value.name });
-
-
           this.router.navigate(['/dashboard']);
         }).catch(
         (err) => {
-          this.error = err;
+          this.edited = true;
+          this.error = err.message;
+          Observable.interval(4000)
+          .take(10).map((x) => x+1)
+          .subscribe((x) => {
+            this.edited= false
+          })
         })
 
     }
   }
+
+ 
+
+  
 }
