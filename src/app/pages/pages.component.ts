@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-
+import { AngularFire, AuthProviders, AuthMethods, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+import { Router } from '@angular/router';
 import { BaMenuService } from '../theme';
 import { PAGES_MENU } from './pages.menu';
 
@@ -32,8 +33,17 @@ import { PAGES_MENU } from './pages.menu';
 })
 export class Pages {
 
-  constructor(private _menuService: BaMenuService,) {
-  }
+  constructor(private _menuService: BaMenuService, public af: AngularFire, private router: Router) {
+  
+  this.af.auth.subscribe(auth => {
+      if (!auth) {
+
+
+            this.router.navigateByUrl('/login');
+
+      }
+    });
+}
 
   ngOnInit() {
     this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
