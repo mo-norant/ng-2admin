@@ -5,8 +5,8 @@ export class BaMsgCenterService {
 
   private _notifications = [
     {
-      name: 'Vlad',
-      text: 'Vlad posted a new article.',
+      name: 'Mo',
+      text: 'Test',
       time: '1 min ago'
     },
     {
@@ -35,6 +35,15 @@ export class BaMsgCenterService {
       time: '3 days ago'
     },
     {
+      name: 'Moka',
+      text: 'fmlhfjhjghmlfkjv',
+      time: '2 Weeks ago'
+    },
+    {
+      name: 'Kostya',
+      text: 'Kostya invited you to join the event.',
+      time: '1 week ago'
+    },{
       name: 'Kostya',
       text: 'Kostya invited you to join the event.',
       time: '1 week ago'

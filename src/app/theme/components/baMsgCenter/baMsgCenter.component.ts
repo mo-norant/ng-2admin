@@ -12,10 +12,12 @@ export class BaMsgCenter {
 
   public notifications:Array<Object>;
   public messages:Array<Object>;
+  public counter : number;
 
   constructor(private _baMsgCenterService:BaMsgCenterService) {
     this.notifications = this._baMsgCenterService.getNotifications();
     this.messages = this._baMsgCenterService.getMessages();
+    this.counter = this._baMsgCenterService.getNotifications().length;
   }
 
 }

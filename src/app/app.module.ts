@@ -7,6 +7,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { AngularFireModule } from 'angularfire2';
 import { AuthGuard } from './auth.service';
 import { ImageUploadModule } from 'ng2-imageupload';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -59,7 +60,8 @@ export const firebaseConfig = {
     PagesModule,
     routing,
     AngularFireModule.initializeApp(firebaseConfig),
-    ImageUploadModule
+    ImageUploadModule,
+    ChartsModule
 
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
